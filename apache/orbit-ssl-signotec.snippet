@@ -1,0 +1,5 @@
+    # WSS-Reverse-Proxy fuer signotec STPadServer (Container auf 127.0.0.1:49494)
+    # Der Wine-Container spricht plain WS (Cert-Setup unter Wine ist nicht
+    # noetig — Apache terminiert TLS mit dem Orbit-Cert).
+    ProxyPass        /signotec-ws/ ws://127.0.0.1:49494/
+    ProxyPassReverse /signotec-ws/ ws://127.0.0.1:49494/

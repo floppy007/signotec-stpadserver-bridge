@@ -1,0 +1,21 @@
+[Unit]
+Description=signotec STPadServer (Wine + Windows-Build) for orbit-signotec-bridge
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=3
+TimeoutStartSec=120
+ExecStartPre=-/usr/bin/docker rm -f signotec-stpadserver
+ExecStart=/usr/bin/docker run --rm --name signotec-stpadserver \
+    --network host \
+    -e TZ=Europe/Berlin \
+    signotec-wine:bundled \
+    127.0.0.1 49494
+ExecStop=/usr/bin/docker stop -t 5 signotec-stpadserver
+
+[Install]
+WantedBy=multi-user.target

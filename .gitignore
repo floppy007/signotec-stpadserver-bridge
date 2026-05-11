@@ -1,0 +1,8 @@
+# signotec Windows binaries — fetched at build time by the Dockerfile,
+# never committed.
+/windows-bundle/
+/.build-tmp/
+
+# OS / Editor
+.DS_Store
+*.sw?
